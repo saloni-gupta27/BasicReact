@@ -1,24 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import ACNLearn from './components/ACNLearn';
+import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
+import Product from './components/Product';
+import Navigation from './components/Navigation';
+import ProductDetails from './components/ProductDetails';
+import Categories from './components/Categories';
+import Form from './components/Form';
+import Bootstrap from './components/Bootstrap';
+import SI from './components/SI';
 
 function App() {
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     
+      <Router>
+      <Navigation/>
+        <Routes>
+        <Route path="/" element={<ACNLearn/>}/>
+        <Route path="/product" element={<Product/>}/>
+       
+        <Route path="/product/productdetail/:pname/:pid/:manf/:price" element={<ProductDetails/>}/>
+        <Route path="/categories" element={<Categories/>}/>
+        <Route path="/categories/forms" element={<Form/>}/>
+        <Route path="/categories/bootstrap" element={<Bootstrap/>}/>
+        <Route path="/categories/calculator" element={<SI/>}/>
+        </Routes>
+     </Router>
     </div>
+
   );
 }
 
